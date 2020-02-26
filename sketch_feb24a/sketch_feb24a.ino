@@ -1,19 +1,23 @@
-#include <LiquidCrystal.h>
-
-// Wheel front left
-const int in0 = 0;
-const int in1 = 1;
-// Wheel front right
-const int in2 = 2;
-const int in3 = 3;
-// Wheel back right
-const int in4 = 4;
-const int in5 = 5;
-// Wheel back left 
-const int in6 = 6;
-const int in7 = 7;
+// define wheel pins
+// front left wheel
+#define in0 0
+#define in1 1
+// front right wheel
+#define in2 2
+#define in3 3
+// back right wheel
+#define in4 4
+#define in5 5
+// back left wheel
+#define in6 6
+#define in7 7
 
 const int degree90Turn = 480; // delay timing for a 90 degree turn
+
+// define sensor pins
+#define trigPin 13 
+#define echoPin 12 
+long duration, distance;
 
 
 void setup()
@@ -39,13 +43,20 @@ void setup()
   digitalWrite(in5, LOW);
   digitalWrite(in6, LOW);
   digitalWrite(in7, LOW);
+
+  // setup for sensor
+  Serial.begin (9600);
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
 }
 
 void loop()
 {
-  driveInSquare();
-  stopWheels();
-  delay(1000);
+  // CODE FOR DEMO
+  doSensorStuff();
+//  demo();
+//  stopWheels();
+//  delay(5000);
 }
 
 
@@ -70,7 +81,7 @@ void driveInSquare()
 }
 
 // Function for testing the motors using both directions
-void testMovement()
+void demo()
 {
   driveInSquare();
   
