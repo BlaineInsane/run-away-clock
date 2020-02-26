@@ -1,18 +1,22 @@
-// Motor 1 connections
-  int in0 = 0;
-  int in1 = 1;
-// Motor 2 connections
-  int in2 = 2;
-  int in3 = 3;
-// Motor 3 connections
-  int in4 = 4;
-  int in5 = 5;
-// Motor 4 connections
-  int in6 = 6;
-  int in7 = 7;
-  
+#include <LiquidCrystal.h>
 
-void setup() 
+// Wheel front left
+const int in0 = 0;
+const int in1 = 1;
+// Wheel front right
+const int in2 = 2;
+const int in3 = 3;
+// Wheel back right
+const int in4 = 4;
+const int in5 = 5;
+// Wheel back left 
+const int in6 = 6;
+const int in7 = 7;
+
+const int degree90Turn = 480; // delay timing for a 90 degree turn
+
+
+void setup()
 {
   // Initialize all of the motor control pins to outputs
   pinMode(in0, OUTPUT);
@@ -23,7 +27,7 @@ void setup()
   pinMode(in5, OUTPUT);
   pinMode(in6, OUTPUT);
   pinMode(in7, OUTPUT);
-  
+
   // Set initial state of motors to off
   // 'LOW' is off
   // 'HIGH' is on
@@ -37,46 +41,53 @@ void setup()
   digitalWrite(in7, LOW);
 }
 
-void loop() 
+void loop()
 {
-  testMovement();
+  driveInSquare();
   stopWheels();
   delay(1000);
 }
 
-void stopWheels()
+
+void driveInSquare()
 {
-  // Turn off motors
-  digitalWrite(in0, LOW);
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, LOW);
-  digitalWrite(in5, LOW);
-  digitalWrite(in6, LOW);
-  digitalWrite(in7, LOW);
+  goForward();
+  delay(1000);
+  turnRight();
+  delay(degree90Turn);
+  goForward();
+  delay(1000);
+  turnRight();
+  delay(degree90Turn);
+  goForward();
+  delay(1000);
+  turnRight();
+  delay(degree90Turn);
+  goForward();
+  delay(1000);
+  turnRight();
+  delay(degree90Turn);
 }
 
 // Function for testing the motors using both directions
-void testMovement() 
+void testMovement()
 {
-  digitalWrite(in0, HIGH);
-  digitalWrite(in1, LOW);
-  digitalWrite(in2, HIGH);
-  digitalWrite(in3, LOW);
-  digitalWrite(in4, HIGH);
-  digitalWrite(in5, LOW);
-  digitalWrite(in6, HIGH);
-  digitalWrite(in7, LOW);
-  delay(2000);
+  driveInSquare();
   
-  digitalWrite(in0, LOW);
-  digitalWrite(in1, HIGH);
-  digitalWrite(in2, LOW);
-  digitalWrite(in3, HIGH);
-  digitalWrite(in4, LOW);
-  digitalWrite(in5, HIGH);
-  digitalWrite(in6, LOW);
-  digitalWrite(in7, HIGH);
-  delay(2000);
+  goForward();
+  delay(1000);
+  goBackward();
+  delay(1000);
+  turnRight();
+  delay(degree90Turn);
+  turnLeft();
+  delay(degree90Turn);
+  slideLeft();
+  delay(1000);
+  slideRight();
+  delay(1000);
+  slideLeft();
+  delay(1000);
+  slideRight();
+  delay(1000);
 }
