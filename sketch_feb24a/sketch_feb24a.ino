@@ -15,6 +15,11 @@ const int in7 = 7;
 
 const int degree90Turn = 480; // delay timing for a 90 degree turn
 
+const int trigPin = 12;    // Trigger
+const int echoPin = 13;    // Echo
+long duration, cm, inches;
+int speakerPin = 8;
+
 
 void setup()
 {
@@ -39,13 +44,25 @@ void setup()
   digitalWrite(in5, LOW);
   digitalWrite(in6, LOW);
   digitalWrite(in7, LOW);
+
+  //Serial Port begin
+  Serial.begin (9600);
+  //Define inputs and outputs
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
+  pinMode(speakerPin, OUTPUT);
+  digitalWrite(speakerPin, LOW);
 }
 
 void loop()
 {
+  /*
   driveInSquare();
   stopWheels();
   delay(1000);
+  */
+
+  doSensorStuff();
 }
 
 
