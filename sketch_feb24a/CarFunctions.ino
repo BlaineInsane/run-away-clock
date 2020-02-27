@@ -48,6 +48,7 @@ void turnRight()
   digitalWrite(in5, HIGH);
   digitalWrite(in6, LOW);
   digitalWrite(in7, HIGH);
+  delay(degree90Turn);
 }
 
 void turnLeft()
@@ -61,6 +62,7 @@ void turnLeft()
   digitalWrite(in5, LOW);
   digitalWrite(in6, HIGH);
   digitalWrite(in7, LOW);
+  delay(degree90Turn);
 }
 
 void slideRight()

@@ -1,16 +1,16 @@
 // define wheel pins
 // front left wheel
-#define in0 0
-#define in1 1
+#define in0 2
+#define in1 3
 // front right wheel
-#define in2 2
-#define in3 3
+#define in2 4
+#define in3 5
 // back right wheel
-#define in4 4
-#define in5 5
+#define in4 6
+#define in5 7
 // back left wheel
-#define in6 6
-#define in7 7
+#define in6 8
+#define in7 9
 
 const int degree90Turn = 480; // delay timing for a 90 degree turn
 
