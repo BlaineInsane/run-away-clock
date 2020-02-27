@@ -15,8 +15,8 @@
 const int degree90Turn = 480; // delay timing for a 90 degree turn
 
 // define sensor pins
-#define trigPin 13 
-#define echoPin 12 
+#define trigPin 13
+#define echoPin 12
 long duration, distance;
 
 
@@ -48,57 +48,14 @@ void setup()
   Serial.begin (9600);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+
+  delay(3000);
 }
 
 void loop()
 {
   // CODE FOR DEMO
-  doSensorStuff();
-//  demo();
-//  stopWheels();
-//  delay(5000);
-}
-
-
-void driveInSquare()
-{
-  goForward();
-  delay(1000);
-  turnRight();
-  delay(degree90Turn);
-  goForward();
-  delay(1000);
-  turnRight();
-  delay(degree90Turn);
-  goForward();
-  delay(1000);
-  turnRight();
-  delay(degree90Turn);
-  goForward();
-  delay(1000);
-  turnRight();
-  delay(degree90Turn);
-}
-
-// Function for testing the motors using both directions
-void demo()
-{
-  driveInSquare();
-  
-  goForward();
-  delay(1000);
-  goBackward();
-  delay(1000);
-  turnRight();
-  delay(degree90Turn);
-  turnLeft();
-  delay(degree90Turn);
-  slideLeft();
-  delay(1000);
-  slideRight();
-  delay(1000);
-  slideLeft();
-  delay(1000);
-  slideRight();
-  delay(1000);
+  demo();
+  stopWheels();
+  delay(60000);
 }
