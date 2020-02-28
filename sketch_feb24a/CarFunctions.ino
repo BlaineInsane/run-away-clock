@@ -97,7 +97,6 @@ void driveInSquare()
   goForward();
   delay(1000);
   turnRight();
-  delay(degree90Turn);
   goForward();
   delay(1000);
   turnRight();

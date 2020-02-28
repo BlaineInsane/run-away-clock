@@ -1,3 +1,5 @@
+#include <NewPing.h>
+
 // define wheel pins
 // front left wheel
 #define in0 2
@@ -17,7 +19,8 @@ const int degree90Turn = 480; // delay timing for a 90 degree turn
 // define sensor pins
 #define trigPin 13
 #define echoPin 12
-long duration, distance;
+long distance;
+long sensorMaxDistance = 50;
 
 
 void setup()
@@ -31,6 +34,9 @@ void setup()
   pinMode(in5, OUTPUT);
   pinMode(in6, OUTPUT);
   pinMode(in7, OUTPUT);
+  // setup for sensor
+  pinMode(trigPin, OUTPUT);
+  pinMode(echoPin, INPUT);
 
   // Set initial state of motors to off
   // 'LOW' is off
@@ -44,10 +50,7 @@ void setup()
   digitalWrite(in6, LOW);
   digitalWrite(in7, LOW);
 
-  // setup for sensor
-  Serial.begin (9600);
-  pinMode(trigPin, OUTPUT);
-  pinMode(echoPin, INPUT);
+  
 
   delay(3000);
 }
@@ -57,5 +60,5 @@ void loop()
   // CODE FOR DEMO
   demo();
   stopWheels();
-  delay(60000);
+  autoDrive();
 }
